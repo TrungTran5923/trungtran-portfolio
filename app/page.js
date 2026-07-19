@@ -9,21 +9,21 @@ import Link from "next/link";
 export const metadata = {
   title: "Home",
   description:
-    "I take TikTok Shop storefronts to #1 — then build the site to match.",
+    "I scale marketplace storefronts to #1 — then build the site to match.",
   alternates: { canonical: "/" },
 };
 
 const STATS = [
   { prefix: "#", value: 1, suffix: "", label: "Ranked storefront, Vacuum Cleaner category, TikTok Shop 6.6 & 11.11" },
-  { prefix: "", value: 9, suffix: "-fig", label: "VND revenue scale contributed at Roborock" },
+  { prefix: "", value: 9, suffix: "-fig", label: "VND revenue scale contributed across marketplace campaigns" },
   { prefix: "", value: 3, suffix: "", label: "Marketplaces operated: TikTok Shop, Shopee, Lazada" },
   { prefix: "", value: 2, suffix: "", label: "Disciplines: ecommerce operations and web development" },
 ];
 
-const PLATFORMS = ["TikTok Shop", "Shopee", "Lazada", "Roborock", "WordPress", "Elementor", "Next.js", "Power BI"];
+const PLATFORMS = ["TikTok Shop", "Shopee", "Lazada", "WordPress", "Elementor", "Next.js", "Power BI", "Livestream"];
 
 const FEATURED_PROJECTS = [
-  { tag: "Ecommerce Operations", title: "Roborock TikTok Shop Storefront", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "Roborock TikTok Shop ranking screenshot" },
+  { tag: "Ecommerce Operations", title: "TikTok Shop Storefront Operations", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "TikTok Shop ranking screenshot" },
   { tag: "Website Development", title: "STU", meta: "Custom WordPress build", img: "STU website screenshot" },
   { tag: "Website Development", title: "Snowball Movie", meta: "Custom website build", img: "Snowball Movie website screenshot" },
 ];
@@ -31,36 +31,22 @@ const FEATURED_PROJECTS = [
 export default function HomePage() {
   return (
     <>
-      <header>
-        <div
-          className="container"
-          style={{
-            paddingTop: 96,
-            paddingBottom: 96,
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: 64,
-            alignItems: "center",
-          }}
-        >
+      <header className="hero">
+        <div className="container hero-grid">
           <Reveal>
-            <span className="tag" style={{ marginBottom: 24 }}>
-              Available for full-time roles &amp; freelance projects
-            </span>
-            <h1 style={{ marginTop: 24 }}>
-              I take TikTok Shop storefronts to #1 — then build the site to
-              match.
+            <span className="eyebrow">Welcome to my profile</span>
+            <h1 className="hero-title">
+              <span className="accent">I&apos;m</span> Trung Tran
+              <span className="hero-subtitle">Ecommerce Operator. Web Developer.</span>
             </h1>
             <p
               className="text-muted"
-              style={{ marginTop: 24, maxWidth: 520, fontSize: 17, lineHeight: 1.7 }}
+              style={{ marginTop: 24, maxWidth: 480, fontSize: 17, lineHeight: 1.7 }}
             >
-              I run day-to-day marketplace operations for Roborock&apos;s
-              TikTok Shop storefront, the global No.1 robot vacuum brand —
-              ranked #1 in the Vacuum Cleaner category through the 6.6 and
-              11.11 mega sales, contributing to a 9-figure VND revenue scale.
-              Off the clock, I design and build WordPress and custom HTML
-              websites.
+              I run day-to-day marketplace operations for a top-ranked TikTok
+              Shop storefront — pricing, Flash Sales, livestream, and
+              dashboards. Off the clock, I design and build WordPress and
+              custom HTML/Next.js websites.
             </p>
             <div style={{ marginTop: 32, display: "flex", gap: 16, flexWrap: "wrap" }}>
               <Link href="/contact-us" className="btn btn-primary">Get In Touch</Link>
@@ -69,15 +55,26 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <Parallax range={40}>
-              <div className="img-placeholder" style={{ aspectRatio: "4/3", borderRadius: "var(--radius-card)" }}>
-                Portrait photo of Trần Lê Minh Trung
+            <div className="hero-visual">
+              <div className="hero-lines" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
               </div>
-              <TiltCard className="card" style={{ marginTop: 24, padding: 24 }} max={8}>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 32, color: "var(--lime)" }}>#1</div>
-                <p style={{ marginTop: 8, fontSize: 14 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
+              <Parallax range={40}>
+                <div className="img-placeholder hero-image">
+                  Portrait photo of Trần Lê Minh Trung
+                </div>
+              </Parallax>
+              <TiltCard className="hero-badge" max={10}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 30, color: "var(--lime)" }}>
+                  <Counter prefix="#" value={1} />
+                </div>
+                <p style={{ marginTop: 6, fontSize: 13 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
               </TiltCard>
-            </Parallax>
+            </div>
           </Reveal>
         </div>
       </header>
