@@ -1,7 +1,9 @@
 import Reveal from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import Parallax from "@/components/Parallax";
+import Counter from "@/components/Counter";
+import TiltCard from "@/components/TiltCard";
 import Link from "next/link";
-import Image from "next/image";
 
 export const metadata = {
   title: "About Me",
@@ -46,7 +48,11 @@ export default function AboutPage() {
       <section>
         <div className="container" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 64, alignItems: "start" }}>
           <Reveal>
-            <Image src="/images/trung-tran.jpg" alt="Trần Lê Minh Trung" width={600} height={750} style={{ borderRadius: "var(--radius-card)", objectFit: "cover", width: "100%", height: "auto" }} />
+            <Parallax range={30}>
+              <div className="img-placeholder" style={{ aspectRatio: "4/5", borderRadius: "var(--radius-card)" }}>
+                Portrait photo of Trần Lê Minh Trung
+              </div>
+            </Parallax>
           </Reveal>
           <Reveal delay={0.1}>
             <h2>From marketplace floor to the code editor.</h2>
@@ -69,9 +75,11 @@ export default function AboutPage() {
           <Reveal as="h2">How I approach the work.</Reveal>
           <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
             {VALUES.map((v) => (
-              <StaggerItem key={v.title} className="card" style={{ padding: 32 }}>
-                <h3>{v.title}</h3>
-                <p style={{ marginTop: 12, fontSize: 15 }}>{v.body}</p>
+              <StaggerItem key={v.title}>
+                <TiltCard className="card" style={{ padding: 32 }}>
+                  <h3>{v.title}</h3>
+                  <p style={{ marginTop: 12, fontSize: 15 }}>{v.body}</p>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>
@@ -87,7 +95,7 @@ export default function AboutPage() {
               <div key={s.label}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 600, color: "var(--white)" }}>
                   <span>{s.label}</span>
-                  <span>{s.pct}%</span>
+                  <span><Counter value={s.pct} suffix="%" /></span>
                 </div>
                 <div className="skill-bar-track">
                   <div className="skill-bar-fill" style={{ width: `${s.pct}%` }} />

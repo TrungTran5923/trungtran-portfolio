@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import TiltCard from "@/components/TiltCard";
 import Link from "next/link";
 
 export const metadata = {
@@ -34,16 +35,18 @@ export default function PortfolioPage() {
       <section>
         <Stagger className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
           {PROJECTS.map((p) => (
-            <StaggerItem key={p.slug} id={p.slug} className="card" style={{ overflow: "hidden" }}>
-              <div className="img-placeholder" style={{ height: 240 }}>{p.img}</div>
-              <div style={{ padding: 28 }}>
-                <span className="tag">{p.tag}</span>
-                <h3 style={{ marginTop: 12 }}>{p.title}</h3>
-                <p style={{ marginTop: 10, fontSize: 14 }}>{p.desc}</p>
-                <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid var(--gray-3)", fontSize: 13, fontWeight: 600, color: "var(--white)" }}>
-                  {p.metric}
+            <StaggerItem key={p.slug} id={p.slug}>
+              <TiltCard className="card" style={{ overflow: "hidden" }}>
+                <div className="img-placeholder" style={{ height: 240 }}>{p.img}</div>
+                <div style={{ padding: 28 }}>
+                  <span className="tag">{p.tag}</span>
+                  <h3 style={{ marginTop: 12 }}>{p.title}</h3>
+                  <p style={{ marginTop: 10, fontSize: 14 }}>{p.desc}</p>
+                  <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid var(--gray-3)", fontSize: 13, fontWeight: 600, color: "var(--white)" }}>
+                    {p.metric}
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </StaggerItem>
           ))}
         </Stagger>

@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Cursor from "@/components/Cursor";
 
 export const metadata = {
   metadataBase: new URL("https://trungtranecom.pro.vn"),
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <Cursor />
         <Header />
         {children}
         <Footer />

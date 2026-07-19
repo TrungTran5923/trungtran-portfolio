@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import TiltCard from "@/components/TiltCard";
 import Link from "next/link";
 
 export const metadata = {
@@ -32,14 +33,16 @@ export default function BlogPage() {
       <section>
         <Stagger className="container" style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 900 }}>
           {ARTICLES.map((a) => (
-            <StaggerItem key={a.title} className="card" style={{ padding: 32 }}>
-              <span className="tag">{a.tag}</span>
-              <h2 style={{ marginTop: 14, fontSize: 24 }}>{a.title}</h2>
-              <p style={{ marginTop: 12, fontSize: 15 }}>{a.excerpt}</p>
-              <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-                <span style={{ fontSize: 13, color: "var(--gray-2)" }}>{a.date} · {a.readTime}</span>
-                <Link href="#" className="btn btn-outline">Read More</Link>
-              </div>
+            <StaggerItem key={a.title}>
+              <TiltCard className="card" style={{ padding: 32 }} max={4}>
+                <span className="tag">{a.tag}</span>
+                <h2 style={{ marginTop: 14, fontSize: 24 }}>{a.title}</h2>
+                <p style={{ marginTop: 12, fontSize: 15 }}>{a.excerpt}</p>
+                <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+                  <span style={{ fontSize: 13, color: "var(--gray-2)" }}>{a.date} · {a.readTime}</span>
+                  <Link href="#" className="btn btn-outline">Read More</Link>
+                </div>
+              </TiltCard>
             </StaggerItem>
           ))}
         </Stagger>

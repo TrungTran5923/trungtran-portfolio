@@ -1,5 +1,9 @@
 import Reveal from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import Parallax from "@/components/Parallax";
+import Marquee from "@/components/Marquee";
+import Counter from "@/components/Counter";
+import TiltCard from "@/components/TiltCard";
 import Link from "next/link";
 
 export const metadata = {
@@ -10,11 +14,13 @@ export const metadata = {
 };
 
 const STATS = [
-  { value: "#1", label: "Ranked storefront, Vacuum Cleaner category, TikTok Shop 6.6 & 11.11" },
-  { value: "9-fig", label: "VND revenue scale contributed at Roborock" },
-  { value: "3", label: "Marketplaces operated: TikTok Shop, Shopee, Lazada" },
-  { value: "2", label: "Disciplines: ecommerce operations and web development" },
+  { prefix: "#", value: 1, suffix: "", label: "Ranked storefront, Vacuum Cleaner category, TikTok Shop 6.6 & 11.11" },
+  { prefix: "", value: 9, suffix: "-fig", label: "VND revenue scale contributed at Roborock" },
+  { prefix: "", value: 3, suffix: "", label: "Marketplaces operated: TikTok Shop, Shopee, Lazada" },
+  { prefix: "", value: 2, suffix: "", label: "Disciplines: ecommerce operations and web development" },
 ];
+
+const PLATFORMS = ["TikTok Shop", "Shopee", "Lazada", "Roborock", "WordPress", "Elementor", "Next.js", "Power BI"];
 
 const FEATURED_PROJECTS = [
   { tag: "Ecommerce Operations", title: "Roborock TikTok Shop Storefront", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "Roborock TikTok Shop ranking screenshot" },
@@ -63,16 +69,20 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <div className="img-placeholder" style={{ aspectRatio: "4/3", borderRadius: "var(--radius-card)" }}>
-              Portrait photo of Trần Lê Minh Trung
-            </div>
-            <div className="card" style={{ marginTop: 24, padding: 24 }}>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 32, color: "var(--lime)" }}>#1</div>
-              <p style={{ marginTop: 8, fontSize: 14 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
-            </div>
+            <Parallax range={40}>
+              <div className="img-placeholder" style={{ aspectRatio: "4/3", borderRadius: "var(--radius-card)" }}>
+                Portrait photo of Trần Lê Minh Trung
+              </div>
+              <TiltCard className="card" style={{ marginTop: 24, padding: 24 }} max={8}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 32, color: "var(--lime)" }}>#1</div>
+                <p style={{ marginTop: 8, fontSize: 14 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
+              </TiltCard>
+            </Parallax>
           </Reveal>
         </div>
       </header>
+
+      <Marquee items={PLATFORMS} />
 
       <section className="section-alt">
         <div className="container">
@@ -84,7 +94,7 @@ export default function HomePage() {
             {STATS.map((stat) => (
               <StaggerItem key={stat.label}>
                 <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 40, color: "var(--white)" }}>
-                  {stat.value}
+                  <Counter prefix={stat.prefix} value={stat.value} suffix={stat.suffix} />
                 </div>
                 <p style={{ marginTop: 8, fontSize: 15 }}>{stat.label}</p>
               </StaggerItem>
@@ -103,13 +113,15 @@ export default function HomePage() {
 
           <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
             {FEATURED_PROJECTS.map((p) => (
-              <StaggerItem key={p.title} className="card" style={{ overflow: "hidden" }}>
-                <div className="img-placeholder" style={{ height: 200 }}>{p.img}</div>
-                <div style={{ padding: 24 }}>
-                  <span className="tag">{p.tag}</span>
-                  <h3 style={{ marginTop: 14 }}>{p.title}</h3>
-                  <p style={{ marginTop: 10, fontSize: 14 }}>{p.meta}</p>
-                </div>
+              <StaggerItem key={p.title}>
+                <TiltCard className="card" style={{ overflow: "hidden" }}>
+                  <div className="img-placeholder" style={{ height: 200 }}>{p.img}</div>
+                  <div style={{ padding: 24 }}>
+                    <span className="tag">{p.tag}</span>
+                    <h3 style={{ marginTop: 14 }}>{p.title}</h3>
+                    <p style={{ marginTop: 10, fontSize: 14 }}>{p.meta}</p>
+                  </div>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>
