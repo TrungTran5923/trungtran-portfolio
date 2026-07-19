@@ -4,29 +4,50 @@ import { useEffect, useState } from "react";
 
 /**
  * Types out `text` one character at a time (classic terminal-style typing
- * animation), then leaves a blinking caret. Runs once on mount.
+ * animation). With `loop`, it types, pauses, deletes, pauses, and repeats
+ * forever; otherwise it types once and leaves a blinking caret.
  */
-export default function TypingText({ text, speed = 80, startDelay = 250, className }) {
+export default function TypingText({
+  text,
+  speed = 80,
+  deleteSpeed = 45,
+  startDelay = 250,
+  holdDelay = 1800,
+  loop = false,
+  className,
+}) {
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
     let i = 0;
-    let stepTimer;
+    let timer;
 
-    function tick() {
+    function typeStep() {
       i += 1;
       setDisplay(text.slice(0, i));
       if (i < text.length) {
-        stepTimer = setTimeout(tick, speed);
+        timer = setTimeout(typeStep, speed);
+      } else if (loop) {
+        timer = setTimeout(deleteStep, holdDelay);
       }
     }
 
-    const startTimer = setTimeout(tick, startDelay);
+    function deleteStep() {
+      i -= 1;
+      setDisplay(text.slice(0, i));
+      if (i > 0) {
+        timer = setTimeout(deleteStep, deleteSpeed);
+      } else {
+        timer = setTimeout(typeStep, speed);
+      }
+    }
+
+    const startTimer = setTimeout(typeStep, startDelay);
     return () => {
       clearTimeout(startTimer);
-      clearTimeout(stepTimer);
+      clearTimeout(timer);
     };
-  }, [text, speed, startDelay]);
+  }, [text, speed, deleteSpeed, startDelay, holdDelay, loop]);
 
   return (
     <span className={className}>

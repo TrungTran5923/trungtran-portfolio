@@ -39,7 +39,7 @@ export default function HomePage() {
               <span className="eyebrow">Welcome to my profile</span>
               <h1 className="hero-title">
                 <span className="accent">I&apos;m</span>{" "}
-                <TypingText text="Trung Tran" />
+                <TypingText text="Trung Tran" loop />
                 <span className="hero-subtitle">Ecommerce Operator. Web Developer.</span>
               </h1>
               <div className="hero-actions">

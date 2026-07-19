@@ -16,10 +16,9 @@ const NAV_LINKS = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
   return (
-    <nav className={`nav${isHome ? " nav-home" : ""}`}>
+    <nav className="nav">
       <div className="container">
         <Link href="/" className="nav-logo">
           Trung Tran

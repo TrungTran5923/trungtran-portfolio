@@ -29,10 +29,11 @@ export default function Footer() {
         <div>
           <div className="footer-col-head">Services</div>
           <ul className="footer-links">
-            <li><Link href="/services">Marketplace Operations</Link></li>
-            <li><Link href="/services">Livestream &amp; Content</Link></li>
-            <li><Link href="/services">Data &amp; Automation</Link></li>
-            <li><Link href="/services">Website Development</Link></li>
+            <li><Link href="/services">WordPress Website Development</Link></li>
+            <li><Link href="/services">AI Workflow Automation</Link></li>
+            <li><Link href="/services">Ecom Operations Consulting</Link></li>
+            <li><Link href="/services">Part-Time Marketplace Ops</Link></li>
+            <li><Link href="/services">Livestream Consulting</Link></li>
           </ul>
         </div>
 
