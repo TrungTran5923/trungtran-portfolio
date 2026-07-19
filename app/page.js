@@ -34,21 +34,26 @@ export default function HomePage() {
     <>
       <header className="hero">
         <div className="container hero-grid">
-          <Reveal>
-            <span className="eyebrow">Welcome to my profile</span>
-            <h1 className="hero-title">
-              <span className="accent">I&apos;m</span>{" "}
-              <TypingText text="Trung Tran" />
-              <span className="hero-subtitle">Ecommerce Operator. Web Developer.</span>
-            </h1>
-            <div className="hero-actions">
-              <Link href="/portfolio" className="btn btn-outline">View Portfolio</Link>
-            </div>
-            <div className="hero-social">
-              <a href="#" aria-label="Facebook">Facebook</a>
-              <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            </div>
-          </Reveal>
+          <div className="hero-left">
+            <Reveal>
+              <span className="eyebrow">Welcome to my profile</span>
+              <h1 className="hero-title">
+                <span className="accent">I&apos;m</span>{" "}
+                <TypingText text="Trung Tran" />
+                <span className="hero-subtitle">Ecommerce Operator. Web Developer.</span>
+              </h1>
+              <div className="hero-actions">
+                <Link href="/portfolio" className="btn btn-outline">View Portfolio</Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="hero-social">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+              </div>
+            </Reveal>
+          </div>
 
           <Reveal delay={0.15}>
             <div className="hero-visual">
@@ -73,16 +78,13 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.25}>
+          <Reveal delay={0.25} className="hero-right">
             <p className="hero-desc text-muted">
               I run day-to-day marketplace operations for a top-ranked TikTok
               Shop storefront — pricing, Flash Sales, livestream, and
               dashboards. Off the clock, I design and build WordPress and
               custom HTML/Next.js websites.
             </p>
-            <div className="hero-actions">
-              <Link href="/contact-us" className="btn btn-primary">Get In Touch</Link>
-            </div>
           </Reveal>
         </div>
       </header>

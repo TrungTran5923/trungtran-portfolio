@@ -667,9 +667,22 @@ p {
   padding-top: 88px;
   padding-bottom: 56px;
   display: grid;
-  grid-template-columns: 0.85fr 1fr 0.75fr;
+  grid-template-columns: 0.85fr 1fr 0.7fr;
   gap: 48px;
-  align-items: center;
+  align-items: stretch;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.hero-right {
+  text-align: right;
+  max-width: 260px;
+  margin-left: auto;
 }
 
 .hero-actions {
@@ -741,7 +754,7 @@ p {
 }
 
 .hero-image {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 5;
   border-radius: var(--radius-card);
   position: relative;
   z-index: 1;
