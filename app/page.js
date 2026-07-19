@@ -4,6 +4,7 @@ import Parallax from "@/components/Parallax";
 import Marquee from "@/components/Marquee";
 import Counter from "@/components/Counter";
 import TiltCard from "@/components/TiltCard";
+import TypingText from "@/components/TypingText";
 import Link from "next/link";
 
 export const metadata = {
@@ -36,21 +37,16 @@ export default function HomePage() {
           <Reveal>
             <span className="eyebrow">Welcome to my profile</span>
             <h1 className="hero-title">
-              <span className="accent">I&apos;m</span> Trung Tran
+              <span className="accent">I&apos;m</span>{" "}
+              <TypingText text="Trung Tran" />
               <span className="hero-subtitle">Ecommerce Operator. Web Developer.</span>
             </h1>
-            <p
-              className="text-muted"
-              style={{ marginTop: 24, maxWidth: 480, fontSize: 17, lineHeight: 1.7 }}
-            >
-              I run day-to-day marketplace operations for a top-ranked TikTok
-              Shop storefront — pricing, Flash Sales, livestream, and
-              dashboards. Off the clock, I design and build WordPress and
-              custom HTML/Next.js websites.
-            </p>
-            <div style={{ marginTop: 32, display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <Link href="/contact-us" className="btn btn-primary">Get In Touch</Link>
+            <div className="hero-actions">
               <Link href="/portfolio" className="btn btn-outline">View Portfolio</Link>
+            </div>
+            <div className="hero-social">
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="LinkedIn">LinkedIn</a>
             </div>
           </Reveal>
 
@@ -74,6 +70,18 @@ export default function HomePage() {
                 </div>
                 <p style={{ marginTop: 6, fontSize: 13 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
               </TiltCard>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <p className="hero-desc text-muted">
+              I run day-to-day marketplace operations for a top-ranked TikTok
+              Shop storefront — pricing, Flash Sales, livestream, and
+              dashboards. Off the clock, I design and build WordPress and
+              custom HTML/Next.js websites.
+            </p>
+            <div className="hero-actions">
+              <Link href="/contact-us" className="btn btn-primary">Get In Touch</Link>
             </div>
           </Reveal>
         </div>

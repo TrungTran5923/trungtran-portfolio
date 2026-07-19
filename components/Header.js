@@ -16,9 +16,10 @@ const NAV_LINKS = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <nav className="nav">
+    <nav className={`nav${isHome ? " nav-home" : ""}`}>
       <div className="container">
         <Link href="/" className="nav-logo">
           Trung Tran
@@ -39,7 +40,7 @@ export default function Header() {
         </ul>
 
         <Link href="/contact-us" className="btn btn-primary nav-cta">
-          Contact Me
+          Hire Me
         </Link>
 
         <button
