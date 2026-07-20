@@ -12,8 +12,8 @@ export const metadata = {
   description:
     "Ecommerce Operations Executive scaling Roborock's TikTok Shop storefront to #1 in Vacuum Cleaners — and the developer behind the sites that back it up.",
   icons: {
-    icon:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060606'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23BFF747' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E",
+    icon: "/images/favicon.png",
+    apple: "/images/favicon.png",
   },
 };
 

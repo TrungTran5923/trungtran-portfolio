@@ -6,6 +6,7 @@ import Counter from "@/components/Counter";
 import TiltCard from "@/components/TiltCard";
 import TypingText from "@/components/TypingText";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Home",
@@ -104,8 +105,14 @@ export default function HomePage() {
                 <span />
               </div>
               <Parallax range={40}>
-                <div className="img-placeholder hero-image">
-                  Portrait photo of Trần Lê Minh Trung
+                <div className="hero-image">
+                  <Image
+                    src="/images/portrait-home.png"
+                    alt="Trần Lê Minh Trung"
+                    fill
+                    style={{ objectFit: "contain" }}
+                    priority
+                  />
                 </div>
               </Parallax>
               <TiltCard className="hero-badge" max={10}>

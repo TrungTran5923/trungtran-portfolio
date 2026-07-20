@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
@@ -21,7 +22,7 @@ export default function Header() {
     <nav className="nav">
       <div className="container">
         <Link href="/" className="nav-logo">
-          Trung Tran
+          <Image src="/images/logo-full.png" alt="Trung Tran" width={160} height={84} style={{ height: 34, width: "auto" }} priority />
         </Link>
 
         <ul className={`nav-links${open ? " is-open" : ""}`}>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -7,7 +8,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-top">
         <div>
-          <div className="footer-brand">Trung Tran</div>
+          <div className="footer-brand">
+            <Image src="/images/logo-full.png" alt="Trung Tran" width={160} height={84} style={{ height: 32, width: "auto" }} />
+          </div>
           <p style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 280 }}>
             Ecommerce Operations Executive scaling TikTok Shop storefronts to
             #1 — and building the websites that back them up.
