@@ -130,32 +130,6 @@ export default function HomePage() {
 
       <Marquee items={PLATFORMS} />
 
-      {/* Giới thiệu ngắn */}
-      <section>
-        <div className="container" style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: 64, alignItems: "center" }}>
-          <Reveal>
-            <div className="img-placeholder" style={{ aspectRatio: "4/5", borderRadius: "var(--radius-card)" }}>
-              Portrait photo of Trần Lê Minh Trung
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <span className="eyebrow">Giới thiệu ngắn</span>
-            <h2>Ecommerce operator by day, web developer by habit.</h2>
-            <p style={{ marginTop: 20, fontSize: 16, lineHeight: 1.8 }}>
-              I run day-to-day marketplace operations for a top-ranked TikTok
-              Shop storefront — pricing, Flash Sales, livestream, and
-              dashboards. Alongside that, I design and build WordPress,
-              custom HTML/CSS/JS, and Next.js websites, plus the AI
-              workflows and automations that keep both sides running
-              smoothly.
-            </p>
-            <div style={{ marginTop: 28 }}>
-              <Link href="/about-me" className="btn btn-outline">Read Full Story</Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Results at a Glance */}
       <section className="section-alt">
         <div className="container">
