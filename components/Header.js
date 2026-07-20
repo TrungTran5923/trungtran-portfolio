@@ -39,7 +39,7 @@ export default function Header() {
         </ul>
 
         <Link href="/contact-us" className="btn btn-primary nav-cta">
-          Hire Me
+          Contact Me
         </Link>
 
         <button
