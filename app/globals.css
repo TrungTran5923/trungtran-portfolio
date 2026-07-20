@@ -241,6 +241,113 @@ p {
   transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
 }
 
+/* Tools/apps logo grid */
+.logo-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.logo-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--black-3);
+  border: 1px solid var(--gray-3);
+  border-radius: var(--radius-card);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.logo-tile:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+}
+
+.logo-tile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--black-2);
+  border: 1px solid var(--gray-4);
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-tile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* Testimonials */
+.testimonial-card {
+  background: var(--black-3);
+  border: 1px solid var(--gray-3);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.testimonial-quote-mark {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--lime);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.testimonial-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray-1);
+  flex-grow: 1;
+}
+
+.testimonial-author {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--black-2);
+  border: 1px solid var(--gray-4);
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: var(--gray-2);
+}
+
+@media (max-width: 900px) {
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Typing caret */
 .typing-cursor {
   display: inline-block;
@@ -688,8 +795,15 @@ p {
 
 .hero-title {
   margin-top: 20px;
-  font-size: clamp(44px, 6.4vw, 78px);
-  line-height: 0.98;
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    white-space: normal;
+  }
 }
 
 .hero-title .accent {
