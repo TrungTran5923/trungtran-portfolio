@@ -110,17 +110,11 @@ export default function HomePage() {
                     src="/images/portrait-home.png"
                     alt="Trần Lê Minh Trung"
                     fill
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: "contain", objectPosition: "bottom" }}
                     priority
                   />
                 </div>
               </Parallax>
-              <TiltCard className="hero-badge" max={10}>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 30, color: "var(--lime)" }}>
-                  <Counter prefix="#" value={1} />
-                </div>
-                <p style={{ marginTop: 6, fontSize: 13 }}>Vacuum Cleaner category, TikTok Shop 6.6 &amp; 11.11</p>
-              </TiltCard>
             </div>
           </Reveal>
 
