@@ -5,6 +5,8 @@ import Marquee from "@/components/Marquee";
 import Counter from "@/components/Counter";
 import TiltCard from "@/components/TiltCard";
 import TypingText from "@/components/TypingText";
+import WorkArc from "@/components/WorkArc";
+import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,6 +37,14 @@ const TOOLS = [
   { name: "Google Colab", abbr: "GC" },
 ];
 
+const SKILLS = [
+  { name: "Marketplace Ops", abbr: "MKT", value: 95 },
+  { name: "WordPress / Elementor", abbr: "WP", value: 92 },
+  { name: "Next.js Development", abbr: "N", value: 85 },
+  { name: "AI Workflow Automation", abbr: "AI", value: 80 },
+  { name: "Livestream Ops", abbr: "LV", value: 88 },
+];
+
 const WHAT_I_DO = [
   { n: "01", title: "WordPress Website Development", body: "WordPress/Elementor and custom HTML/Next.js builds." },
   { n: "02", title: "AI Workflow Automation", body: "Automations and dashboards that remove manual busywork." },
@@ -44,16 +54,16 @@ const WHAT_I_DO = [
 ];
 
 const WORK_EXPERIENCE = [
-  { n: "01", title: "Levoit — Ecommerce Operations Intern", body: "First hands-on exposure to marketplace operations and ecommerce content workflows." },
-  { n: "02", title: "Decor Home & Phuong Hoang Linh", body: "Marketplace operations and content across multiple storefronts." },
-  { n: "03", title: "Freelance Web Development", body: "Designed and built websites for STU, Rennes, and independent brands." },
-  { n: "04", title: "Vietnam O-Tech Smart Equipment — Ecommerce Executive", body: "Running a TikTok Shop storefront, #1 in Vacuum Cleaners during the 6.6 & 11.11 mega sales.", active: true },
+  { n: "01", short: "Levoit", title: "Levoit — Ecommerce Operations Intern", body: "First hands-on exposure to marketplace operations and ecommerce content workflows." },
+  { n: "02", short: "Decor Home", title: "Decor Home & Phuong Hoang Linh", body: "Marketplace operations and content across multiple storefronts." },
+  { n: "03", short: "Freelance Web", title: "Freelance Web Development", body: "Designed and built websites for STU, Rennes, and independent brands." },
+  { n: "04", short: "O-Tech Smart Equipment", title: "Vietnam O-Tech Smart Equipment — Ecommerce Executive", body: "Running a TikTok Shop storefront, #1 in Vacuum Cleaners during the 6.6 & 11.11 mega sales.", active: true },
 ];
 
 const FEATURED_PROJECTS = [
-  { tag: "Ecommerce Operations", title: "TikTok Shop Storefront Operations", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "TikTok Shop ranking screenshot" },
-  { tag: "Website Development", title: "STU", meta: "Custom WordPress build", img: "STU website screenshot" },
-  { tag: "Website Development", title: "Snowball Movie", meta: "Custom website build", img: "Snowball Movie website screenshot" },
+  { tag: "Ecommerce Operations", title: "TikTok Shop Storefront Operations", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "prj-roborock.png" },
+  { tag: "Website Development", title: "UEH-Rennes", meta: "Custom WordPress build for Top University", img: "prj-ueh-rennes.png" },
+  { tag: "Website Development", title: "Snowball Movie", meta: "Custom website build", img: null },
 ];
 
 // Placeholder testimonials — swap in real quotes/names once you have them.
@@ -64,9 +74,9 @@ const TESTIMONIALS = [
 ];
 
 const NEWS = [
-  { tag: "Case Study", title: "How I Took a TikTok Shop Storefront to #1 in Vacuum Cleaners on 11.11", date: "Nov 2025" },
-  { tag: "Playbook", title: "5 Things I Check Before Every Flash Sale Campaign", date: "Sep 2025" },
-  { tag: "Perspective", title: "Why I Still Write HTML/CSS as an Ecommerce Operator", date: "Jul 2025" },
+  { tag: "Case Study", title: "How I Took a TikTok Shop Storefront to #1 in Vacuum Cleaners on 11.11", date: "Nov 2025", gradient: "linear-gradient(135deg, #bff747, #1c2b12)" },
+  { tag: "Playbook", title: "5 Things I Check Before Every Flash Sale Campaign", date: "Sep 2025", gradient: "linear-gradient(135deg, #3a3a3a, #0c0c0c)" },
+  { tag: "Perspective", title: "Why I Still Write HTML/CSS as an Ecommerce Operator", date: "Jul 2025", gradient: "linear-gradient(135deg, #4d5b2e, #101010)" },
 ];
 
 export default function HomePage() {
@@ -95,7 +105,7 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} style={{ alignSelf: "stretch" }}>
             <div className="hero-visual">
               <div className="hero-lines" aria-hidden="true">
                 <span />
@@ -125,11 +135,90 @@ export default function HomePage() {
               dashboards. Off the clock, I design and build WordPress and
               custom HTML/Next.js websites.
             </p>
+
+            <a href="/portfolio" className="hero-showreel">
+              <span className="hero-showreel-btn" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              <span className="hero-showreel-label">Show Reel</span>
+            </a>
+
+            <div className="hero-trusted">
+              <svg className="hero-trusted-curve" width="46" height="34" viewBox="0 0 46 34" fill="none" aria-hidden="true">
+                <path d="M2 2C20 2 6 20 24 22C34 23.2 40 18 44 10" stroke="currentColor" strokeWidth="1.4" strokeDasharray="3 4" />
+                <path d="M38 6L44 10L39 15" stroke="currentColor" strokeWidth="1.4" fill="none" />
+              </svg>
+              <div className="avatar-stack" aria-hidden="true">
+                <span className="avatar-stack-item">TT</span>
+                <span className="avatar-stack-item">SP</span>
+                <span className="avatar-stack-item">LZ</span>
+                <span className="avatar-stack-item is-count">3+</span>
+              </div>
+              <span className="hero-trusted-label">
+                Marketplaces &amp;<br />clients worked with
+              </span>
+            </div>
           </Reveal>
         </div>
       </header>
 
       <Marquee items={PLATFORMS} />
+
+      {/* About Myself */}
+      <section>
+        <div className="container">
+          <Reveal><span className="eyebrow">About Myself</span></Reveal>
+          <div className="about-grid">
+            <div>
+              <Reveal className="about-badges">
+                <span className="about-badge"><strong>2+ yrs</strong> in marketplace &amp; web ops</span>
+                <span className="about-badge"><strong>#1</strong> storefront ranking, TikTok Shop</span>
+              </Reveal>
+
+              <Stagger className="skill-tile-grid">
+                {SKILLS.map((s) => (
+                  <StaggerItem key={s.name} className="skill-tile">
+                    <div className="skill-tile-icon">{s.abbr}</div>
+                    <div>
+                      <div className="skill-tile-value">
+                        <Counter value={s.value} suffix="%" />
+                      </div>
+                      <div className="skill-tile-name">{s.name}</div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+
+              <Reveal delay={0.1} className="about-tools-label">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" aria-hidden="true">
+                  <path d="M2 2C18 2 6 18 22 20C28 20.8 31 17 33 12" stroke="currentColor" strokeWidth="1.4" strokeDasharray="3 4" />
+                </svg>
+                My favorite tools
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.15} className="about-right">
+              <p className="text-muted">
+                I&apos;m an ecommerce operations executive who also builds the
+                websites behind the storefronts I run — day to day I manage
+                pricing, Flash Sales, and livestream for a top-ranked TikTok
+                Shop storefront.
+              </p>
+              <p className="text-muted">
+                Off the clock, I design and build WordPress/Elementor and
+                custom HTML/Next.js sites, and set up AI-driven workflows
+                that remove manual busywork for small teams.
+              </p>
+              <div className="about-actions">
+                <Link href="/about-me" className="btn btn-outline">Get to Know Me</Link>
+                <Link href="/contact-us" className="btn btn-outline">Book a Call</Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* Results at a Glance */}
       <section className="section-alt">
@@ -174,14 +263,20 @@ export default function HomePage() {
             <Reveal><Link href="/services" className="btn btn-outline">See All Services</Link></Reveal>
           </div>
 
-          <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
+          <Stagger style={{ marginTop: 24 }}>
             {WHAT_I_DO.map((s) => (
               <StaggerItem key={s.n}>
-                <TiltCard className="card" style={{ padding: 28 }} max={6}>
-                  <div className="service-icon" style={{ background: "var(--black-2)", width: 52, height: 52, fontSize: 16, borderRadius: 12 }}>{s.n}</div>
-                  <h3 style={{ marginTop: 18, fontSize: 18 }}>{s.title}</h3>
-                  <p style={{ marginTop: 10, fontSize: 14 }}>{s.body}</p>
-                </TiltCard>
+                <Link href="/services" className="list-row">
+                  <div className="list-row-body">
+                    <h3 style={{ fontSize: 26, textTransform: "uppercase" }}>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </div>
+                  <span className="list-row-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </Link>
               </StaggerItem>
             ))}
           </Stagger>
@@ -193,40 +288,43 @@ export default function HomePage() {
         <div className="container">
           <Reveal><span className="eyebrow">Work Experience</span></Reveal>
           <Reveal as="h2">The path so far.</Reveal>
-          <Stagger style={{ marginTop: 40, display: "flex", flexDirection: "column" }}>
-            {WORK_EXPERIENCE.map((t) => (
-              <StaggerItem key={t.n} className="timeline-step">
-                <div className={`timeline-num${t.active ? " active" : ""}`}>{t.n}</div>
-                <div>
-                  <h4>{t.title}</h4>
-                  <p style={{ marginTop: 6, fontSize: 14 }}>{t.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <Reveal delay={0.1}>
+            <WorkArc items={WORK_EXPERIENCE} />
+          </Reveal>
         </div>
       </section>
 
       {/* My Projects */}
-      <section>
+      <section className="projects-section">
+        <span className="projects-watermark" aria-hidden="true">PROJECTS</span>
         <div className="container">
-          <Reveal><span className="eyebrow">My Projects</span></Reveal>
+          <Reveal><span className="eyebrow">My Featured Projects</span></Reveal>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 16 }}>
             <Reveal as="h2">A mix of marketplace campaigns and the sites I&apos;ve built.</Reveal>
             <Reveal><Link href="/portfolio" className="btn btn-outline">See All Work</Link></Reveal>
           </div>
 
-          <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-            {FEATURED_PROJECTS.map((p) => (
+          <Stagger className="projects-grid" style={{ marginTop: 56, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+            {FEATURED_PROJECTS.map((p, i) => (
               <StaggerItem key={p.title}>
-                <TiltCard className="card" style={{ overflow: "hidden" }}>
-                  <div className="img-placeholder" style={{ height: 200 }}>{p.img}</div>
-                  <div style={{ padding: 24 }}>
-                    <span className="tag">{p.tag}</span>
-                    <h3 style={{ marginTop: 14 }}>{p.title}</h3>
-                    <p style={{ marginTop: 10, fontSize: 14 }}>{p.meta}</p>
-                  </div>
-                </TiltCard>
+                <Parallax range={i % 2 === 0 ? 18 : -18}>
+                  <TiltCard className="project-tile" max={9}>
+                    {p.img && (
+                      <Image
+                        src={`/images/${p.img}`}
+                        alt={p.title}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        sizes="(max-width: 900px) 100vw, 33vw"
+                      />
+                    )}
+                    <div className="project-tile-body">
+                      <span className="tag">{p.tag}</span>
+                      <h3>{p.title}</h3>
+                      <p>{p.meta}</p>
+                    </div>
+                  </TiltCard>
+                </Parallax>
               </StaggerItem>
             ))}
           </Stagger>
@@ -238,23 +336,9 @@ export default function HomePage() {
         <div className="container">
           <Reveal><span className="eyebrow">Testimonials</span></Reveal>
           <Reveal as="h2">What people I&apos;ve worked with say.</Reveal>
-          <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-            {TESTIMONIALS.map((t, i) => (
-              <StaggerItem key={i}>
-                <TiltCard className="testimonial-card" max={6}>
-                  <span className="testimonial-quote-mark">&ldquo;</span>
-                  <p className="testimonial-body">{t.quote}</p>
-                  <div className="testimonial-author">
-                    <div className="testimonial-avatar" />
-                    <div>
-                      <div className="testimonial-name">{t.name}</div>
-                      <div className="testimonial-role">{t.role}</div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <Reveal delay={0.1}>
+            <Testimonials items={TESTIMONIALS} />
+          </Reveal>
         </div>
       </section>
 
@@ -267,14 +351,29 @@ export default function HomePage() {
             <Reveal><Link href="/blog" className="btn btn-outline">View All News</Link></Reveal>
           </div>
 
-          <Stagger style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+          <Stagger style={{ marginTop: 24 }}>
             {NEWS.map((a) => (
               <StaggerItem key={a.title}>
-                <TiltCard className="card" style={{ padding: 28 }} max={5}>
-                  <span className="tag">{a.tag}</span>
-                  <h3 style={{ marginTop: 16, fontSize: 18 }}>{a.title}</h3>
-                  <p style={{ marginTop: 12, fontSize: 13, color: "var(--gray-2)" }}>{a.date}</p>
-                </TiltCard>
+                <div className="news-row">
+                  <div className="news-row-body">
+                    <span className="tag">{a.tag}</span>
+                    <h3 style={{ marginTop: 14 }}>{a.title}</h3>
+                    <div className="news-row-meta">
+                      <div className="news-avatar" style={{ background: "var(--black-2)", border: "1px solid var(--gray-4)" }} />
+                      <span className="news-row-author">
+                        <strong>Trung Tran</strong>
+                        {a.date}
+                      </span>
+                    </div>
+                    <Link href="/blog" className="news-row-more">
+                      Read More
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  </div>
+                  <div className="news-row-img" style={{ background: a.gradient }} />
+                </div>
               </StaggerItem>
             ))}
           </Stagger>
