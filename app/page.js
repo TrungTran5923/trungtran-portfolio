@@ -38,11 +38,11 @@ const TOOLS = [
 ];
 
 const SKILLS = [
-  { name: "Marketplace Ops", abbr: "MKT", value: 95 },
-  { name: "WordPress / Elementor", abbr: "WP", value: 92 },
-  { name: "Next.js Development", abbr: "N", value: 85 },
-  { name: "AI Workflow Automation", abbr: "AI", value: 80 },
-  { name: "Livestream Ops", abbr: "LV", value: 88 },
+  { name: "Marketplace Ops", abbr: "MKT", icon: "ecomsite.png", value: 95 },
+  { name: "WordPress / Elementor", abbr: "WP", icon: "weblogo.png", value: 92 },
+  { name: "Data Analysis", abbr: "DA", icon: "datatools.png", value: 85 },
+  { name: "AI Workflow Automation", abbr: "AI", icon: "aiauto.png", value: 80 },
+  { name: "Livestream Ops", abbr: "LV", icon: "livetools.png", value: 88 },
 ];
 
 const WHAT_I_DO = [
@@ -63,7 +63,7 @@ const WORK_EXPERIENCE = [
 const FEATURED_PROJECTS = [
   { tag: "Ecommerce Operations", title: "TikTok Shop Storefront Operations", meta: "#1 in Vacuum Cleaners — TikTok Shop 6.6 & 11.11", img: "prj-roborock.png" },
   { tag: "Website Development", title: "UEH-Rennes", meta: "Custom WordPress build for Top University", img: "prj-ueh-rennes.png" },
-  { tag: "Website Development", title: "Snowball Movie", meta: "Custom website build", img: null },
+  { tag: "Website Development", title: "StyleAI", meta: "Custom Intergrated A.I function on website", img: "prj-styleai.png" },
 ];
 
 // Placeholder testimonials — swap in real quotes/names once you have them.
@@ -180,7 +180,13 @@ export default function HomePage() {
               <Stagger className="skill-tile-grid">
                 {SKILLS.map((s) => (
                   <StaggerItem key={s.name} className="skill-tile">
-                    <div className="skill-tile-icon">{s.abbr}</div>
+                    <div className={`skill-tile-icon${s.icon ? " has-image" : ""}`}>
+                      {s.icon ? (
+                        <Image src={`/images/${s.icon}`} alt={s.name} width={44} height={44} style={{ objectFit: "contain" }} />
+                      ) : (
+                        s.abbr
+                      )}
+                    </div>
                     <div>
                       <div className="skill-tile-value">
                         <Counter value={s.value} suffix="%" />

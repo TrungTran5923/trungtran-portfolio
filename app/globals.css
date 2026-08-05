@@ -1520,6 +1520,15 @@ p {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.skill-tile-icon.has-image {
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px;
 }
 
 .skill-tile-value {
