@@ -9,6 +9,9 @@ import WorkArc from "@/components/WorkArc";
 import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
 import Image from "next/image";
+import fs from "fs";
+import path from "path";
+import { POSTS } from "@/lib/posts";
 
 export const metadata = {
   title: "Home",
@@ -27,14 +30,14 @@ const STATS = [
 const PLATFORMS = ["TikTok Shop", "Shopee", "Lazada", "WordPress", "Elementor", "Next.js", "Power BI", "Livestream"];
 
 const TOOLS = [
-  { name: "TikTok Shop", abbr: "TT" },
-  { name: "Shopee", abbr: "SP" },
-  { name: "Lazada", abbr: "LZ" },
-  { name: "WordPress", abbr: "WP" },
-  { name: "Elementor", abbr: "EL" },
-  { name: "Next.js", abbr: "N" },
-  { name: "Power BI", abbr: "BI" },
-  { name: "Google Colab", abbr: "GC" },
+  { name: "TikTok Shop", icon: "logo-tiktokshop.png" },
+  { name: "Shopee", icon: "logo-shopee.png" },
+  { name: "Lazada", icon: "logo-lazada.png" },
+  { name: "WordPress", icon: "logo-wordpress.png" },
+  { name: "Elementor", icon: "logo-elementor.png" },
+  { name: "Data Analysis", icon: "datatools.png" },
+  { name: "AI Automation", icon: "aiauto.png" },
+  { name: "Livestream", icon: "livetools.png" },
 ];
 
 const SKILLS = [
@@ -66,18 +69,15 @@ const FEATURED_PROJECTS = [
   { tag: "Website Development", title: "StyleAI", meta: "Custom Intergrated A.I function on website", img: "prj-styleai.png" },
 ];
 
-// Placeholder testimonials — swap in real quotes/names once you have them.
 const TESTIMONIALS = [
-  { quote: "Placeholder testimonial — replace with a real quote from a client or teammate you've worked with.", name: "Client Name", role: "Role, Company" },
-  { quote: "Placeholder testimonial — replace with a real quote from a client or teammate you've worked with.", name: "Client Name", role: "Role, Company" },
-  { quote: "Placeholder testimonial — replace with a real quote from a client or teammate you've worked with.", name: "Client Name", role: "Role, Company" },
+  { quote: "Trung picked up marketplace operations and content quickly and always took ownership of the details. He is reliable, careful with numbers, and easy to work with.", name: "Ms. Kim Linh", role: "Co-founder / Business Owner, Phượng Hoàng Linh Media & Training Co., Ltd" },
+  { quote: "What I value most is his attitude: he asks the right questions, follows through on tasks, and keeps improving how he works. I would happily work with him again.", name: "Ms. Phượng Nguyễn", role: "Co-founder / Business Owner, Phượng Hoàng Linh Media & Training Co., Ltd" },
 ];
 
-const NEWS = [
-  { tag: "Case Study", title: "How I Took a TikTok Shop Storefront to #1 in Vacuum Cleaners on 11.11", date: "Nov 2025", gradient: "linear-gradient(135deg, #bff747, #1c2b12)" },
-  { tag: "Playbook", title: "5 Things I Check Before Every Flash Sale Campaign", date: "Sep 2025", gradient: "linear-gradient(135deg, #3a3a3a, #0c0c0c)" },
-  { tag: "Perspective", title: "Why I Still Write HTML/CSS as an Ecommerce Operator", date: "Jul 2025", gradient: "linear-gradient(135deg, #4d5b2e, #101010)" },
-];
+const NEWS = POSTS.map((p) => ({
+  ...p,
+  hasImg: !!p.img && fs.existsSync(path.join(process.cwd(), "public", "images", p.img)),
+}));
 
 export default function HomePage() {
   return (
@@ -99,8 +99,10 @@ export default function HomePage() {
 
             <Reveal delay={0.3}>
               <div className="hero-social">
-                <a href="#" aria-label="Facebook">Facebook</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://www.facebook.com/minhtrung.tranle.3/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+                <a href="https://www.linkedin.com/in/trung-tran-4311a9282/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://www.youtube.com/@trung-dilungtung" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a>
+                <a href="https://github.com/TrungTran5923" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
               </div>
             </Reveal>
           </div>
@@ -135,31 +137,6 @@ export default function HomePage() {
               dashboards. Off the clock, I design and build WordPress and
               custom HTML/Next.js websites.
             </p>
-
-            <a href="/portfolio" className="hero-showreel">
-              <span className="hero-showreel-btn" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-              <span className="hero-showreel-label">Show Reel</span>
-            </a>
-
-            <div className="hero-trusted">
-              <svg className="hero-trusted-curve" width="46" height="34" viewBox="0 0 46 34" fill="none" aria-hidden="true">
-                <path d="M2 2C20 2 6 20 24 22C34 23.2 40 18 44 10" stroke="currentColor" strokeWidth="1.4" strokeDasharray="3 4" />
-                <path d="M38 6L44 10L39 15" stroke="currentColor" strokeWidth="1.4" fill="none" />
-              </svg>
-              <div className="avatar-stack" aria-hidden="true">
-                <span className="avatar-stack-item">TT</span>
-                <span className="avatar-stack-item">SP</span>
-                <span className="avatar-stack-item">LZ</span>
-                <span className="avatar-stack-item is-count">3+</span>
-              </div>
-              <span className="hero-trusted-label">
-                Marketplaces &amp;<br />clients worked with
-              </span>
-            </div>
           </Reveal>
         </div>
       </header>
@@ -252,7 +229,7 @@ export default function HomePage() {
           <Stagger className="logo-grid">
             {TOOLS.map((t) => (
               <StaggerItem key={t.name} className="logo-tile">
-                <div className="logo-tile-icon">{t.abbr}</div>
+                <div className="logo-tile-icon"><Image src={`/images/${t.icon}`} alt={t.name} width={40} height={40} style={{ objectFit: "contain" }} /></div>
                 <span className="logo-tile-name">{t.name}</span>
               </StaggerItem>
             ))}
@@ -371,14 +348,16 @@ export default function HomePage() {
                         {a.date}
                       </span>
                     </div>
-                    <Link href="/blog" className="news-row-more">
+                    <Link href={`/blog/${a.slug}`} className="news-row-more">
                       Read More
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                         <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </Link>
                   </div>
-                  <div className="news-row-img" style={{ background: a.gradient }} />
+                  <div className="news-row-img" style={{ background: a.gradient }}>
+                    {a.hasImg && <Image src={`/images/${a.img}`} alt={a.title} fill style={{ objectFit: "cover" }} sizes="220px" />}
+                  </div>
                 </div>
               </StaggerItem>
             ))}

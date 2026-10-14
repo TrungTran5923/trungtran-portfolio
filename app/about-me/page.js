@@ -20,9 +20,10 @@ const VALUES = [
 
 const SKILLS = [
   { label: "Marketplace Operations (TikTok Shop, Shopee, Lazada)", pct: 95 },
-  { label: "Livestream & Content Production", pct: 85 },
-  { label: "Data Analytics (Power BI, Colab, Lark Base)", pct: 80 },
-  { label: "WordPress, Elementor & Custom HTML/CSS/JS", pct: 88 },
+  { label: "WordPress, Elementor & Custom HTML/CSS/JS", pct: 92 },
+  { label: "Livestream & Content Production", pct: 88 },
+  { label: "Data Analytics (Power BI, Colab, Lark Base)", pct: 85 },
+  { label: "AI Workflow Automation", pct: 80 },
 ];
 
 const TIMELINE = [

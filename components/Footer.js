@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container footer-top">
         <div>
           <div className="footer-brand">
-            <Image src="/images/logo-full.png" alt="Trung Tran" width={220} height={116} style={{ height: 48, width: "auto" }} />
+            <Image src="/images/logo-full.png" alt="Trung Tran" width={220} height={46} style={{ height: 34, width: "auto" }} />
           </div>
           <p style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 280 }}>
             Ecommerce Operations Executive scaling TikTok Shop storefronts to

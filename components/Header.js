@@ -22,7 +22,7 @@ export default function Header() {
     <nav className="nav">
       <div className="container">
         <Link href="/" className="nav-logo">
-          <Image src="/images/logo-full.png" alt="Trung Tran" width={220} height={116} style={{ height: 56, width: "auto" }} priority />
+          <Image src="/images/logo-full.png" alt="Trung Tran" width={220} height={46} style={{ height: 38, width: "auto" }} priority />
         </Link>
 
         <ul className={`nav-links${open ? " is-open" : ""}`}>

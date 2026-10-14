@@ -11,6 +11,13 @@ export const metadata = {
   },
   description:
     "Ecommerce Operations Executive scaling Roborock's TikTok Shop storefront to #1 in Vacuum Cleaners — and the developer behind the sites that back it up.",
+  openGraph: {
+    type: "website",
+    siteName: "Trung Tran",
+    locale: "en_US",
+    url: "/",
+  },
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: "/images/favicon.png",
     apple: "/images/favicon.png",
