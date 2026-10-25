@@ -4,3 +4,6 @@ out
 .env*.local
 .DS_Store
 *.log
+
+# old files moved aside by Claude — safe to delete
+_trash/

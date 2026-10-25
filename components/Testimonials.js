@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 /**
  * Testimonial carousel — one lime card visible at a time, with a
  * prev/next pair and a "01 / 03" counter, echoing Revox's slider.
  */
-export default function Testimonials({ items }) {
+export default function Testimonials({ items, labels = { prev: "Previous testimonial", next: "Next testimonial" } }) {
   const [index, setIndex] = useState(0);
 
   const go = (dir) => setIndex((i) => (i + dir + items.length) % items.length);
@@ -25,9 +26,18 @@ export default function Testimonials({ items }) {
             <div>
               <p className="testi-quote">&ldquo;{t.quote}&rdquo;</p>
               <div className="testi-foot">
-                <div>
+                <div className="testi-person">
+                  {t.hasPhoto ? (
+                    <Image className="testi-avatar" src={`/images/${t.photo}`} alt={t.name} width={56} height={56} />
+                  ) : (
+                    <span className="testi-avatar testi-initials" aria-hidden="true">
+                      {t.name.replace(/^(Ms|Mr|Mrs)\.?\s+/i, "").split(/\s+/).map((w) => w[0]).slice(-2).join("")}
+                    </span>
+                  )}
+                  <div>
                   <div className="testi-name">{t.name}</div>
-                  <div className="testi-role">{t.role}</div>
+                    <div className="testi-role">{t.role}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -41,12 +51,12 @@ export default function Testimonials({ items }) {
           <span className="current">{String(index + 1).padStart(2, "0")}</span> / {String(items.length).padStart(2, "0")}
         </span>
         <div className="testi-nav">
-          <button type="button" onClick={() => go(-1)} aria-label="Previous testimonial">
+          <button type="button" onClick={() => go(-1)} aria-label={labels.prev}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-          <button type="button" onClick={() => go(1)} aria-label="Next testimonial">
+          <button type="button" onClick={() => go(1)} aria-label={labels.next}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

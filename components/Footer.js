@@ -1,8 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getContent } from "@/lib/content";
+import { CONTACT, SOCIALS, localePath } from "@/lib/site";
 
-export default function Footer() {
+export default function Footer({ lang = "en" }) {
   const year = new Date().getFullYear();
+  const c = getContent(lang);
+  const t = c.footer;
 
   return (
     <footer className="footer">
@@ -11,48 +15,47 @@ export default function Footer() {
           <div className="footer-brand">
             <Image src="/images/logo-full.png" alt="Trung Tran" width={220} height={46} style={{ height: 34, width: "auto" }} />
           </div>
-          <p style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 280 }}>
-            Ecommerce Operations Executive scaling TikTok Shop storefronts to
-            #1 — and building the websites that back them up.
-          </p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 300 }}>{t.blurb}</p>
+          <div className="footer-social">
+            {SOCIALS.map((s) => (
+              <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer">{s.name}</a>
+            ))}
+          </div>
         </div>
 
         <div>
-          <div className="footer-col-head">Quick Links</div>
+          <div className="footer-col-head">{t.quick}</div>
           <ul className="footer-links">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about-me">About Me</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/portfolio">Portfolio</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/contact-us">Contact Us</Link></li>
+            {c.nav.links.map((l) => (
+              <li key={l.href}><Link href={localePath(lang, l.href)}>{l.label}</Link></li>
+            ))}
           </ul>
         </div>
 
         <div>
-          <div className="footer-col-head">Services</div>
+          <div className="footer-col-head">{t.services}</div>
           <ul className="footer-links">
-            <li><Link href="/services">WordPress Website Development</Link></li>
-            <li><Link href="/services">AI Workflow Automation</Link></li>
-            <li><Link href="/services">Ecom Operations Consulting</Link></li>
-            <li><Link href="/services">Part-Time Marketplace Ops</Link></li>
-            <li><Link href="/services">Livestream Consulting</Link></li>
+            {c.services.map((s) => (
+              <li key={s.title}><Link href={localePath(lang, "/services")}>{s.title}</Link></li>
+            ))}
           </ul>
         </div>
 
         <div>
-          <div className="footer-col-head">Contact</div>
+          <div className="footer-col-head">{t.contact}</div>
           <ul className="footer-links">
-            <li><a href="mailto:trungtran5923@gmail.com">trungtran5923@gmail.com</a></li>
-            <li><a href="tel:+84902368316">0902 368 316</a></li>
-            <li><span>Ho Chi Minh City, Vietnam</span></li>
+            <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+            <li><a href={`tel:${CONTACT.phoneIntl}`}>{CONTACT.phone}</a></li>
+            <li><a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer">Zalo: {CONTACT.phone}</a></li>
+            <li><span>{t.location}</span></li>
+            <li><span>{t.remote}</span></li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
         <div className="container">
-          <span>&copy; {year} Trần Lê Minh Trung. All rights reserved.</span>
+          <span>&copy; {year} Trần Lê Minh Trung. {t.rights}</span>
           <span>trungtranecom.pro.vn</span>
         </div>
       </div>

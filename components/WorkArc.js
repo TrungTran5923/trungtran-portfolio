@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
  * node jumps straight to it. Much simpler/cleaner than the earlier dome
  * layout, and the interaction (click any step) is obvious at a glance.
  */
-export default function WorkArc({ items, interval = 4500 }) {
+export default function WorkArc({ items, interval = 4500, tag = "Work Experience" }) {
   const defaultIndex = items.findIndex((it) => it.active);
   const [active, setActive] = useState(defaultIndex >= 0 ? defaultIndex : items.length - 1);
   const timerRef = useRef(null);
@@ -63,7 +63,7 @@ export default function WorkArc({ items, interval = 4500 }) {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="work-panel-tag">Work Experience — {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
+            <span className="work-panel-tag">{tag} — {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}{current.date ? ` · ${current.date}` : ""}</span>
             <h3>{current.title}</h3>
             <p>{current.body}</p>
           </motion.div>
