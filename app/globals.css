@@ -1853,43 +1853,40 @@ p {
   }
 }
 
-/* Floating chat buttons */
-.chat-float {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 90;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.chat-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s var(--ease);
-}
-
-.chat-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-}
-
-.chat-zalo {
-  background: #0068ff;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.chat-linkedin {
-  background: #0a66c2;
-}
+/* Floating contact button (expands into social links) */
+.cb-wrap{--cb-main:var(--lime);position:fixed;right:18px;bottom:24px;z-index:9000;display:flex;flex-direction:column;align-items:center;gap:14px}
+.cb-list{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cb-main{position:relative}
+.cb-toggle{position:relative;width:56px;height:56px;border:0;border-radius:50%;background:var(--cb-main);color:var(--black-1);cursor:pointer;box-shadow:0 4px 14px rgba(191,247,71,.35);display:flex;align-items:center;justify-content:center;padding:0;transition:transform .2s}
+.cb-toggle:hover{transform:scale(1.08)}
+.cb-toggle svg{position:absolute;width:48%;height:48%;z-index:2;transition:transform .3s,opacity .3s}
+.cb-i-close{opacity:0;transform:rotate(-90deg)}
+.cb-wrap.open .cb-i-chat{opacity:0;transform:rotate(90deg)}
+.cb-wrap.open .cb-i-close{opacity:1;transform:none}
+.cb-toggle::before,.cb-toggle::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--cb-main);opacity:.5;z-index:1;animation:cb-pulse 2s infinite}
+.cb-toggle::after{animation-delay:1s}
+.cb-wrap.open .cb-toggle::before,.cb-wrap.open .cb-toggle::after{animation:none;opacity:0}
+@keyframes cb-pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.9);opacity:0}}
+.cb-bubble{position:absolute;right:calc(100% + 16px);top:50%;transform:translateY(-50%) translateX(24px);opacity:0;pointer-events:none;white-space:nowrap;background:#fff;color:#1a1a1a;font:600 14px/1 var(--font-body);padding:11px 16px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,.35);animation:cb-bubble 10s ease-in-out 2s infinite}
+.cb-bubble::after{content:"";position:absolute;left:100%;top:50%;margin-top:-6px;border:6px solid transparent;border-left-color:#fff}
+.cb-wrap.open .cb-bubble{animation:none;opacity:0}
+@keyframes cb-bubble{0%,6%{opacity:0;transform:translateY(-50%) translateX(24px) scale(.9)}14%,60%{opacity:1;transform:translateY(-50%) translateX(0) scale(1)}68%,100%{opacity:0;transform:translateY(-50%) translateX(24px) scale(.9)}}
+.cb-badge{position:absolute;top:-4px;right:-4px;box-sizing:border-box;width:22px;height:22px;border-radius:50%;background:#ff3b30;color:#fff;border:2px solid #fff;font:700 13px/18px var(--font-body);text-align:center;z-index:3;pointer-events:none;box-shadow:0 2px 6px rgba(0,0,0,.3);animation:cb-badge 1.6s ease-in-out infinite;transition:opacity .2s,transform .2s}
+@keyframes cb-badge{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.cb-wrap.open .cb-badge{animation:none;opacity:0;transform:scale(0)}
+.cb-btn{position:relative;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.4);text-decoration:none}
+.cb-item{opacity:0;transform:translateY(20px) scale(.5);pointer-events:none;transition:opacity .25s,transform .25s}
+.cb-wrap.open .cb-item{opacity:1;transform:none;pointer-events:auto;transition-delay:var(--d)}
+.cb-btn svg{width:52%;height:52%}
+.cb-facebook{background:#1877f2}
+.cb-linkedin{background:#0a66c2}
+.cb-youtube{background:#ff0000}
+.cb-github{background:#24292f;border:1px solid #444}
+.cb-wrap.open .cb-btn:hover{transform:scale(1.1)}
+.cb-label{position:absolute;right:100%;margin-right:10px;background:#222;color:#fff;font:500 12px/1 var(--font-body);padding:7px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.cb-btn:hover .cb-label{opacity:1}
+@media(hover:none){.cb-label{display:none}}
+@media(max-width:768px){.cb-wrap{right:12px;bottom:16px}.cb-toggle{width:52px;height:52px}.cb-btn{width:44px;height:44px}.cb-bubble{font-size:13px;padding:10px 14px}}
 
 /* Footer socials */
 .footer-social {
