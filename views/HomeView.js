@@ -52,7 +52,11 @@ export default function HomeView({ lang = "en" }) {
               <h1 className="hero-title">
                 <span className="accent">{h.hero.im}</span>{" "}
                 <TypingText text="Trung Tran" loop />
-                <span className="hero-subtitle">{h.hero.subtitle}</span>
+                <span className="hero-subtitle">
+                  {h.hero.subtitle.split(/(?<=\.)\s+/).map((line) => (
+                    <span key={line} className="hero-subtitle-line">{line}</span>
+                  ))}
+                </span>
               </h1>
               <div className="hero-actions">
                 <Link href={L("/contact-us")} className="btn btn-primary">{h.hero.ctaPrimary}</Link>

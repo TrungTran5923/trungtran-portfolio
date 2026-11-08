@@ -2634,3 +2634,23 @@ img.news-avatar {
   font-weight: 800;
   font-size: 18px;
 }
+
+/* Hero status pill stays on one line; subtitle breaks after each sentence */
+.hero-status {
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 7px 14px;
+  max-width: 100%;
+}
+
+.hero-subtitle-line {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  .hero-status,
+  .hero-subtitle-line {
+    white-space: normal;
+  }
+}
